@@ -1,84 +1,85 @@
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
+    private static final Scanner SCAN = new Scanner(System.in);
+    private static String ordinal(int n) {
+        int mod100 = n % 100;
+        if (mod100 >= 11 && mod100 <= 13) return n + "th";
+        switch (n % 10) {
+            case 1: return n + "st";
+            case 2: return n + "nd";
+            case 3: return n + "rd";
+            default: return n + "th";
+        }
+    }
+    private static int readChoice() {
+        System.out.println(" ");
         menu();
-        Scanner scan = new Scanner(System.in);
-        int choice;
         while (true) {
-            if (scan.hasNextInt()) {
-                choice = scan.nextInt();
-                break;
+            if (SCAN.hasNextInt()) {
+                return SCAN.nextInt();
             } else {
-                System.out.println("Please enter an interger.");
-                menu();
-                scan.next();
+                System.out.println("Please enter an integer.");
+                SCAN.next();
                 System.out.println(" ");
             }
         }
+    }
+    public static void main(String[] args) {
+        Scanner scan = SCAN;
+        int choice = readChoice();
         boolean exit = false;
         System.out.println(" ");
-    while (exit == false) {
-        if (choice >= -1 && choice <= 10) {
-        if (choice != -1){
-        switch (choice) {
-            case 1:
-                Task1();
-                break;
-            case 2:
-                Task2();
-                break;
-            case 3:
-                Task3();
-                break;
-            case 4:
-                Task4();
-                break;
-            case 5:
-                task5();
-                break;
-            case 6:
-                task6();
-                break;
-            case 7:
-                task7();
-                break;
-            case 8:
-                task8();
-                break;
-            case 9:
-                task9();
-                break;
-            case 10:
-                task10();
-                break;
-        }
-    }
-        else if (choice == -1){
-            System.out.println("Exiting the program. Thank you for playing!");
-            exit = true;
-            return;
-        }
-        }
-        else {
-            System.out.println("Please enter a number between 1 and 10, or -1 to exit.");
-        }
-        System.out.println(" ");
-        System.out.println(" ");
-        menu();
-        while (true) {
-            if (scan.hasNextInt()) {
-                choice = scan.nextInt();
-                break;
+        while (!exit) {
+            if (choice >= -1 && choice <= 10) {
+                if (choice != -1) {
+                    switch (choice) {
+                        case 1:
+                            Task1();
+                            break;
+                        case 2:
+                            Task2();
+                            break;
+                        case 3:
+                            Task3();
+                            break;
+                        case 4:
+                            Task4();
+                            break;
+                        case 5:
+                            task5();
+                            break;
+                        case 6:
+                            task6();
+                            break;
+                        case 7:
+                            task7();
+                            break;
+                        case 8:
+                            task8();
+                            break;
+                        case 9:
+                            task9();
+                            break;
+                        case 10:
+                            task10();
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    System.out.println("Exiting the program. Thank you for playing!");
+                    exit = true;
+                    if (SCAN!=null) 
+                        SCAN.close();
+                    return;
+                }
             } else {
-                System.out.println("Please enter an interger.");
-                menu();
-                scan.next();
-                System.out.println(" ");
+                System.out.println("Please enter a number between 1 and 10, or -1 to exit.");
             }
+
+            choice = readChoice();
         }
-        System.out.println(" ");
     }
-}
 
 
 //Menu of all tasks
@@ -97,7 +98,7 @@ public static void menu(){
     System.out.println("8. Parallel Arrays");
     System.out.println("9. 2D Arrays");
     System.out.println("10. Converting 2D Arrays into 1D Arrays");
-    System.out.println("-1. Exit the prgram");
+    System.out.println("-1. Exit the program");
     System.out.println(" ");
 }
 
@@ -108,14 +109,14 @@ public static void menu(){
     //Task 2 Distance Converter
     public static void Task2(){
         System.out.print("please enter your value(in km) that will be converted into miles: ");
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = SCAN;
         int km;
         while (true) {
         if (scan.hasNextInt()) {
             km = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -126,14 +127,14 @@ public static void menu(){
     //Task 3 Largest Number
     public static void Task3(){
         System.out.println("please enter the 1st number: ");
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = SCAN;
         int Biggest;
         while (true) {
         if (scan.hasNextInt()) {
             Biggest = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -141,14 +142,14 @@ public static void menu(){
 
         byte count = 2;
         while (count <= 3) {
-        System.out.println("please enter the " + count + "st number: ");
+        System.out.println("please enter the " + ordinal(count) + " number: ");
         int Num;
         while (true) {
         if (scan.hasNextInt()) {
             Num = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -163,14 +164,14 @@ public static void menu(){
     //Task 4 and 5: Largest Number of 10
     public static void Task4(){
         System.out.println("please enter the 1st number: ");
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = SCAN;
         int Biggest;
         while (true) {
         if (scan.hasNextInt()) {
             Biggest = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -178,14 +179,14 @@ public static void menu(){
 
         byte count = 2;
         while (count <= 10) {
-        System.out.println("please enter the " + count + "st number: ");
+        System.out.println("please enter the " + ordinal(count) + " number: ");
         int Num;
         while (true) {
         if (scan.hasNextInt()) {
             Num = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -199,126 +200,104 @@ public static void menu(){
     }
     //Task 6: Secret Number Game
     public static void task5(){
-    int SecretNumber = 83;
+        int SecretNumber = 83;
         System.out.println("Guess the secret number: ");
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = SCAN;
         int count = 1;
         int Guess;
         while (true) {
-        if (scan.hasNextInt()) {
-            Guess = scan.nextInt();
-            break;
+            if (scan.hasNextInt()) {
+                Guess = scan.nextInt();
+                break;
             } else {
-            System.out.println("Please enter an interger.");
-            scan.next();
-            System.out.println(" ");
+                System.out.println("Please enter an integer.");
+                scan.next();
+                System.out.println(" ");
             }
         }
         while (count != 10 && Guess != SecretNumber) {
             if (Guess < SecretNumber) {
                 System.out.println("Your Guess is too low! Try again: ");
-            }
-            else {
+            } else {
                 System.out.println("Your Guess is too high! Try again: ");
             }
-        while (true) {
-        if (scan.hasNextInt()) {
-            Guess = scan.nextInt();
-            break;
-            } else {
-            System.out.println("Please enter an interger.");
-            scan.next();
-            System.out.println(" ");
+            while (true) {
+                if (scan.hasNextInt()) {
+                    Guess = scan.nextInt();
+                    break;
+                } else {
+                    System.out.println("Please enter an integer.");
+                    scan.next();
+                    System.out.println(" ");
+                }
             }
-        }
             count++;
         }
-        if (count == 10) {
+        if (Guess == SecretNumber) {
+            System.out.println("Congratulations! You've guessed the secret number! The secret number is: " + SecretNumber);
+        } else {
             System.out.println("Sorry, you've used all your attempts. The secret number was: " + SecretNumber);
         }
-        else{
-        System.out.println("Congratulations! You've guessed the secret number! The secret number is: " + SecretNumber);
     }
-}
     //Task 7: How many days in any month... ever?
     public static void task6(){
         System.out.println("please enter the year: ");
-        Scanner scan = new Scanner(System.in);
-        double Year; 
+        Scanner scan = SCAN;
+        int Year;
         while (true) {
-        if (scan.hasNextInt()) {
-            Year = scan.nextInt();
-            break;
+            if (scan.hasNextInt()) {
+                Year = scan.nextInt();
+                break;
             } else {
-            System.out.println("Please enter an interger.");
-            scan.next();
-            System.out.println(" ");
+                System.out.println("Please enter an integer.");
+                scan.next();
+                System.out.println(" ");
             }
         }
         System.out.println("please enter the month: ");
         int Month;
         while (true) {
-        if (scan.hasNextInt()) {
-            Month = scan.nextInt();
-            break;
+            if (scan.hasNextInt()) {
+                Month = scan.nextInt();
+                break;
             } else {
-            System.out.println("Please enter an interger.");
-            scan.next();
-            System.out.println(" ");
+                System.out.println("Please enter an integer.");
+                scan.next();
+                System.out.println(" ");
             }
         }
-//checking the value to be correct:
+        // validate values
         if (Month < 1 || Month > 12) {
-            System.out.println("please reenter the month month:");
-            scan.close();
+            System.out.println("Please reenter a valid month (1-12).");
             return;
         }
-        if (Year < 0) {
-            System.out.println("please reenter the year:");
-            scan.close();
+        if (Year < 1) {
+            System.out.println("Please reenter a valid year (>= 1).");
             return;
         }
-//if Century Year:
-        double Century = Year % 100;
-        boolean isCentury = false;
-        if (Century == 0) {
-            isCentury = true;
-        }
-//is leap year:
-        if (Year / 4 % 1 == 0 && isCentury == false || isCentury == true && Year / 400 % 1 == 0) {
-            if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12) {
-                System.out.println("The month has 31 days, and it is a leap year");
-            } else if (Month == 4 || Month == 6 || Month == 9 || Month == 11) {
-                System.out.println("The month has 30 days, and it is a leap year");
-            } else if (Month == 2) {
-                System.out.println("The month has 29 days, and it is a leap year");
-            }
-        }
-//not a leap year:
-        else {
-            if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12) {
-                System.out.println("the month has 31 days, and it is not a leap year");
-            } else if (Month == 4 || Month == 6 || Month == 9 || Month == 11) {
-                System.out.println("The month has 30 days, and it is not a leap year");
-            } else if (Month == 2) {
-                System.out.println("The month has 28 days, and it is not a leap year");
-            }
+        boolean isLeap = (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+        if (Month == 1 || Month == 3 || Month == 5 || Month == 7 || Month == 8 || Month == 10 || Month == 12) {
+            System.out.println("The month has 31 days, and it is " + (isLeap ? "a" : "not a") + " leap year");
+        } else if (Month == 4 || Month == 6 || Month == 9 || Month == 11) {
+            System.out.println("The month has 30 days, and it is " + (isLeap ? "a" : "not a") + " leap year");
+        } else { // February
+            System.out.println("The month has " + (isLeap ? 29 : 28) + " days, and it is " + (isLeap ? "a" : "not a") + " leap year");
         }
     }
     //Task 9: Creating and Accessing Arrays
     public static void task7(){
         int count = 1;
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = SCAN;
         int[] Numbers = new int[10];
         while (count <= 10) {
-            System.out.print("Please enter the " + count + "th number: ");
+            System.out.print("Please enter the " + ordinal(count) + " number: ");
             int num;
         while (true) {
         if (scan.hasNextInt()) {
             num = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -333,7 +312,7 @@ public static void menu(){
             searching = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -373,7 +352,7 @@ public static void menu(){
         for (int i = 0; i < studentHeight.length; i++) {
             totalHeight = totalHeight + studentHeight [i];
         }
-        averageHeight = totalHeight / studentHeight.length;
+        averageHeight = totalHeight / (double) studentHeight.length;
 
 
         //The table
@@ -418,7 +397,7 @@ public static void menu(){
             
         }
         }
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = SCAN;
         System.out.println("Enter the month (1-12): ");
         int inputMonth;
         while (true) {
@@ -426,7 +405,7 @@ public static void menu(){
             inputMonth = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
@@ -438,7 +417,7 @@ public static void menu(){
             inputCity = scan.nextInt();
             break;
             } else {
-            System.out.println("Please enter an interger.");
+            System.out.println("Please enter an integer.");
             scan.next();
             System.out.println(" ");
             }
