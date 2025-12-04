@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Main {
-    private static final Scanner SCAN = new Scanner(System.in);
-    private static String ordinal(int n) {
+    public static Scanner scanner = new Scanner(System.in);
+    public static String ordinal(int n) {
         int mod100 = n % 100;
         if (mod100 >= 11 && mod100 <= 13) return n + "th";
         switch (n % 10) {
@@ -11,21 +11,21 @@ public class Main {
             default: return n + "th";
         }
     }
-    private static int readChoice() {
+    public static int readChoice() {
         System.out.println(" ");
         menu();
         while (true) {
-            if (SCAN.hasNextInt()) {
-                return SCAN.nextInt();
+            if (scanner.hasNextInt()) {
+                return scanner.nextInt();
             } else {
                 System.out.println("Please enter an integer.");
-                SCAN.next();
+                scanner.next();
                 System.out.println(" ");
             }
         }
     }
     public static void main(String[] args) {
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         int choice = readChoice();
         boolean exit = false;
         System.out.println(" ");
@@ -69,8 +69,8 @@ public class Main {
                 } else {
                     System.out.println("Exiting the program. Thank you for playing!");
                     exit = true;
-                    if (SCAN!=null) 
-                        SCAN.close();
+                    if (scanner!=null) 
+                        scanner.close();
                     return;
                 }
             } else {
@@ -109,7 +109,7 @@ public static void menu(){
     //Task 2 Distance Converter
     public static void Task2(){
         System.out.print("please enter your value(in km) that will be converted into miles: ");
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         int km;
         while (true) {
         if (scan.hasNextInt()) {
@@ -127,7 +127,7 @@ public static void menu(){
     //Task 3 Largest Number
     public static void Task3(){
         System.out.println("please enter the 1st number: ");
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         int Biggest;
         while (true) {
         if (scan.hasNextInt()) {
@@ -164,7 +164,7 @@ public static void menu(){
     //Task 4 and 5: Largest Number of 10
     public static void Task4(){
         System.out.println("please enter the 1st number: ");
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         int Biggest;
         while (true) {
         if (scan.hasNextInt()) {
@@ -202,7 +202,7 @@ public static void menu(){
     public static void task5(){
         int SecretNumber = 83;
         System.out.println("Guess the secret number: ");
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         int count = 1;
         int Guess;
         while (true) {
@@ -242,7 +242,7 @@ public static void menu(){
     //Task 7: How many days in any month... ever?
     public static void task6(){
         System.out.println("please enter the year: ");
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         int Year;
         while (true) {
             if (scan.hasNextInt()) {
@@ -287,7 +287,7 @@ public static void menu(){
     //Task 9: Creating and Accessing Arrays
     public static void task7(){
         int count = 1;
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         int[] Numbers = new int[10];
         while (count <= 10) {
             System.out.print("Please enter the " + ordinal(count) + " number: ");
@@ -383,7 +383,7 @@ public static void menu(){
         {12, 11, 13, 11, 11},
         };
         int month = 0;
-        int city = 0;
+        int city = 1;
         int finalMonth;
         int finalCity;
         for (month = 0; month < 12; month++) {
@@ -397,7 +397,7 @@ public static void menu(){
             
         }
         }
-        Scanner scan = SCAN;
+        Scanner scan = scanner;
         System.out.println("Enter the month (1-12): ");
         int inputMonth;
         while (true) {
